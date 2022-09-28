@@ -29,17 +29,18 @@ export async function getServerSideProps() {
   //     dataTwo,
   //   },
   // };
-  // const chosenList = [
-  //   { name: 침착맨, channelId: UCUj6rrhMTR9pipbAWBAMvUQ },
-  //   { name: 슈카, channelId: UCsJ6RuBiTVWRX156FVbeaGg },
-  // ];
+  const chosenList = [
+    { name: '침착맨', channelId: 'UCUj6rrhMTR9pipbAWBAMvUQ' },
+    { name: '슈카', channelId: 'UCsJ6RuBiTVWRX156FVbeaGg' },
+  ];
+
   const resThree = await fetch(
     `${YOUTUBE_SEARCH_API}?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&order=date&maxResults=3&key=${process.env.YOUTUBE_API_KEY}`
   );
   const dataThree = await resThree.json();
 
   const resFour = await fetch(
-    `${YOUTUBE_SEARCH_API}?part=snippet&channelId=UCsJ6RuBiTVWRX156FVbeaGg&order=date&maxResults=3&key=${process.env.YOUTUBE_API_KEY}`
+    `${YOUTUBE_SEARCH_API}?part=snippet&channelId=${chosenList[1].channelId}&order=date&maxResults=3&key=${process.env.YOUTUBE_API_KEY}`
   );
   const dataFour = await resFour.json();
 
