@@ -9,26 +9,35 @@ const YOUTUBE_CHANNELS_API = 'https://www.googleapis.com/youtube/v3/channels';
 const YOUTUBE_SEARCH_API = 'https://www.googleapis.com/youtube/v3/search';
 const YOUTUBE_VIDEOS_API = 'https://www.googleapis.com/youtube/v3/videos';
 
+const chosenList = [
+  { name: '침착맨', channelId: 'UCUj6rrhMTR9pipbAWBAMvUQ' },
+  { name: '슈카', channelId: 'UCsJ6RuBiTVWRX156FVbeaGg' },
+];
 export async function getStaticProps() {
-  const chosenList = [
-    { name: '침착맨', channelId: 'UCUj6rrhMTR9pipbAWBAMvUQ' },
-    { name: '슈카', channelId: 'UCsJ6RuBiTVWRX156FVbeaGg' },
-  ];
-
   const resTwo = await fetch(
     `${YOUTUBE_CHANNELS_API}?part=snippet&forUsername=슈카월드&key=${process.env.YOUTUBE_API_KEY}`
   );
   const dataTwo = await resTwo.json();
 
-  const resThree = await fetch(
-    `${YOUTUBE_SEARCH_API}?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&order=date&maxResults=1&key=${process.env.YOUTUBE_API_KEY}`
-  );
-  const dataThree = await resThree.json();
+  // const resThree = await fetch(
+  //   `${YOUTUBE_SEARCH_API}?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&order=date&maxResults=1&key=${process.env.YOUTUBE_API_KEY}`
+  // );
+  // const dataThree = await resThree.json();
 
-  const resFour = await fetch(
-    `${YOUTUBE_SEARCH_API}?part=snippet&channelId=${chosenList[1].channelId}&order=date&maxResults=1&key=${process.env.YOUTUBE_API_KEY}`
-  );
-  const dataFour = await resFour.json();
+  // const resFour = await fetch(
+  //   `${YOUTUBE_SEARCH_API}?part=snippet&channelId=${chosenList[1].channelId}&order=date&maxResults=1&key=${process.env.YOUTUBE_API_KEY}`
+  // );
+  // const dataFour = await resFour.json();
+
+  //fetch 하는거 모았음
+  const requests = (num) => {
+    return `${YOUTUBE_SEARCH_API}?part=snippet&channelId=${chosenList[num].channelId}&order=date&maxResults=1&key=${process.env.YOUTUBE_API_KEY}`;
+  };
+
+  const [dataThree, dataFour] = await Promise.all([
+    fetch(requests(0)).then((res) => res.json()),
+    fetch(requests(1)).then((res) => res.json()),
+  ]);
 
   return {
     props: {
