@@ -22,8 +22,10 @@ function OneVideo({ dataName }) {
                       alt=""
                     />
                   </p>
-                  <h2>{title}</h2>
-                  <h4>{publishTime}</h4>
+                  <h2 className="text-sm">{title}</h2>
+                  <h4>{new Date(publishTime).toLocaleDateString()}</h4>
+                  {/* {new Date(val.createdAt).toLocaleDateString()} */}
+
                   <h4>{channelTitle}</h4>
                   <h5>만약 publishTime이 오늘이라면 오늘이라고 마킹되어있기</h5>
                 </div>
