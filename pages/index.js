@@ -7,18 +7,13 @@ const YOUTUBE_PLAYLIST_ITEMS_API =
   'https://www.googleapis.com/youtube/v3/playlistItems';
 const YOUTUBE_CHANNELS_API = 'https://www.googleapis.com/youtube/v3/channels';
 const YOUTUBE_SEARCH_API = 'https://www.googleapis.com/youtube/v3/search';
-const YOUTUBE_VIDEOS_API = 'https://www.googleapis.com/youtube/v3/videos';
 
 const chosenList = [
   { name: '침착맨', channelId: 'UCUj6rrhMTR9pipbAWBAMvUQ' },
   { name: '슈카', channelId: 'UCsJ6RuBiTVWRX156FVbeaGg' },
+  { name: '걍밍경', channelId: 'UCfqVrM2cvwxG3-EvxbsN0KQ' },
 ];
 export async function getStaticProps() {
-  const resTwo = await fetch(
-    `${YOUTUBE_CHANNELS_API}?part=snippet&forUsername=슈카월드&key=${process.env.YOUTUBE_API_KEY}`
-  );
-  const dataTwo = await resTwo.json();
-
   // const resThree = await fetch(
   //   `${YOUTUBE_SEARCH_API}?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&order=date&maxResults=1&key=${process.env.YOUTUBE_API_KEY}`
   // );
@@ -34,25 +29,26 @@ export async function getStaticProps() {
     return `${YOUTUBE_SEARCH_API}?part=snippet&channelId=${chosenList[num].channelId}&order=date&maxResults=1&key=${process.env.YOUTUBE_API_KEY}`;
   };
 
-  const [dataThree, dataFour] = await Promise.all([
+  const [dataThree, dataFour, dataFive] = await Promise.all([
     fetch(requests(0)).then((res) => res.json()),
     fetch(requests(1)).then((res) => res.json()),
+    fetch(requests(2)).then((res) => res.json()),
   ]);
 
   return {
     props: {
       dataThree,
-      dataTwo,
       dataFour,
+      dataFive,
     },
     revalidate: 3600,
   };
 }
 
-export default function Home({ dataTwo, dataThree, dataFour }) {
-  console.log('dataTwo', dataTwo);
+export default function Home({ dataThree, dataFour, dataFive }) {
   console.log('dataThree', dataThree);
   console.log('dataFour', dataFour);
+  console.log('dataFive', dataFive);
 
   return (
     <div>
@@ -86,7 +82,6 @@ export default function Home({ dataTwo, dataThree, dataFour }) {
 
       <ul>
         {dataThree.items.map((item) => {
-          console.log('item3', item);
           const { id = {}, snippet = {} } = item;
           const { videoId } = id;
           const { title, publishTime, channelTitle, thumbnails = {} } = snippet; //destructure 해두는 과정임
@@ -116,7 +111,35 @@ export default function Home({ dataTwo, dataThree, dataFour }) {
 
       <ul>
         {dataFour.items.map((item) => {
-          console.log('item3', item);
+          const { id = {}, snippet = {} } = item;
+          const { videoId } = id;
+          const { title, publishTime, channelTitle, thumbnails = {} } = snippet; //destructure 해두는 과정임
+          const { medium = {} } = thumbnails;
+          return (
+            <li key={videoId}>
+              <Link href={`https://www.youtube.com/watch?v=${videoId}`}>
+                <div>
+                  <p>
+                    <Image
+                      width={medium.width}
+                      height={medium.height}
+                      src={medium.url}
+                      alt=""
+                    />
+                  </p>
+                  <h2>{title}</h2>
+                  <h4>{publishTime}</h4>
+                  <h4>{channelTitle}</h4>
+                  <h5>만약 publishTime이 오늘이라면 오늘이라고 마킹되어있기</h5>
+                </div>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+
+      <ul>
+        {dataFive.items.map((item) => {
           const { id = {}, snippet = {} } = item;
           const { videoId } = id;
           const { title, publishTime, channelTitle, thumbnails = {} } = snippet; //destructure 해두는 과정임
