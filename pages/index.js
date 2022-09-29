@@ -9,38 +9,24 @@ const YOUTUBE_CHANNELS_API = 'https://www.googleapis.com/youtube/v3/channels';
 const YOUTUBE_SEARCH_API = 'https://www.googleapis.com/youtube/v3/search';
 const YOUTUBE_VIDEOS_API = 'https://www.googleapis.com/youtube/v3/videos';
 
-export async function getServerSideProps() {
-  const res = await fetch(
-    `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLif_jr7pPZAD8EJtkFBBctqm5L38JqtGb&maxResults=3&key=${process.env.YOUTUBE_API_KEY}`
-  );
-  const data = await res.json();
-  // return {
-  //   props: {
-  //     data,
-  //   },
-  // };
-
-  const resTwo = await fetch(
-    `${YOUTUBE_CHANNELS_API}?part=snippet&forUsername=슈카월드&key=${process.env.YOUTUBE_API_KEY}`
-  );
-  const dataTwo = await resTwo.json();
-  // return {
-  //   props: {
-  //     dataTwo,
-  //   },
-  // };
+export async function getStaticProps() {
   const chosenList = [
     { name: '침착맨', channelId: 'UCUj6rrhMTR9pipbAWBAMvUQ' },
     { name: '슈카', channelId: 'UCsJ6RuBiTVWRX156FVbeaGg' },
   ];
 
+  const resTwo = await fetch(
+    `${YOUTUBE_CHANNELS_API}?part=snippet&forUsername=슈카월드&key=${process.env.YOUTUBE_API_KEY}`
+  );
+  const dataTwo = await resTwo.json();
+
   const resThree = await fetch(
-    `${YOUTUBE_SEARCH_API}?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&order=date&maxResults=3&key=${process.env.YOUTUBE_API_KEY}`
+    `${YOUTUBE_SEARCH_API}?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&order=date&maxResults=1&key=${process.env.YOUTUBE_API_KEY}`
   );
   const dataThree = await resThree.json();
 
   const resFour = await fetch(
-    `${YOUTUBE_SEARCH_API}?part=snippet&channelId=${chosenList[1].channelId}&order=date&maxResults=3&key=${process.env.YOUTUBE_API_KEY}`
+    `${YOUTUBE_SEARCH_API}?part=snippet&channelId=${chosenList[1].channelId}&order=date&maxResults=1&key=${process.env.YOUTUBE_API_KEY}`
   );
   const dataFour = await resFour.json();
 
@@ -49,13 +35,12 @@ export async function getServerSideProps() {
       dataThree,
       dataTwo,
       dataFour,
-      data,
     },
+    revalidate: 3600,
   };
 }
 
-export default function Home({ data, dataTwo, dataThree, dataFour }) {
-  console.log('data', data);
+export default function Home({ dataTwo, dataThree, dataFour }) {
   console.log('dataTwo', dataTwo);
   console.log('dataThree', dataThree);
   console.log('dataFour', dataFour);
