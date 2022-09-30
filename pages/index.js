@@ -15,6 +15,7 @@ const chosenList = [
   { name: '슈카', channelId: 'UCsJ6RuBiTVWRX156FVbeaGg' },
   { name: '걍밍경', channelId: 'UCfqVrM2cvwxG3-EvxbsN0KQ' },
   { name: '콬TV', channelId: 'UCybPxZoFDPR1qbN04daAc2g' },
+  { name: 'GYM JONG KOOK', channelId: 'UCoe-0EVDJnjlSoPK8ygcGwQ' },
 ];
 export async function getStaticProps() {
   const requests = (num) => {
@@ -25,17 +26,25 @@ export async function getStaticProps() {
     return `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLAlM76XTWG8fZ2bT8hcQL3HKbVVs3j95g&maxResults=1&key=${process.env.YOUTUBE_API_KEY}`;
   };
 
-  const [dataThree, dataFour, dataFive, dataSix] = await Promise.all([
-    fetch(requests(0)).then((res) => res.json()),
-    fetch(requests(1)).then((res) => res.json()),
-    fetch(requests(2)).then((res) => res.json()),
-    fetch(requests(3)).then((res) => res.json()),
-  ]);
+  const [dataThree, dataFour, dataFive, dataSix, dataSeven] = await Promise.all(
+    [
+      fetch(requests(0)).then((res) => res.json()),
+      fetch(requests(1)).then((res) => res.json()),
+      fetch(requests(2)).then((res) => res.json()),
+      fetch(requests(3)).then((res) => res.json()),
+      fetch(requests(4)).then((res) => res.json()),
+    ]
+  );
 
   const res = await fetch(
     `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLif_jr7pPZAD8EJtkFBBctqm5L38JqtGb&maxResults=3&key=${process.env.YOUTUBE_API_KEY}`
   );
   const playListOne = await res.json();
+
+  const resTwo = await fetch(
+    `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLeb2Hd9bOARRduRxOeT9YIm6BvD6hYYHs&maxResults=3&key=${process.env.YOUTUBE_API_KEY}`
+  );
+  const playListTwo = await resTwo.json();
 
   return {
     props: {
@@ -44,6 +53,8 @@ export async function getStaticProps() {
       dataFive,
       dataSix,
       playListOne,
+      dataSeven,
+      playListTwo,
     },
     revalidate: 3600,
   };
@@ -55,17 +66,47 @@ export default function Home({
   dataFive,
   dataSix,
   playListOne,
+  // dataSeven,
+  playListTwo,
 }) {
   console.log('dataThree', dataThree);
   console.log('dataFour', dataFour);
   console.log('dataFive', dataFive);
   console.log('dataSix', dataSix);
   console.log('playListOne', playListOne);
+  console.log('playListTwo', playListTwo);
 
   return (
     <div>
       <ul>
         {playListOne.items.map((item) => {
+          console.log('item', item);
+          const { id, snippet = {} } = item;
+          const { title, thumbnails = {}, resourceId } = snippet; //destructure 해두는 과정임
+          const { medium = {} } = thumbnails;
+          return (
+            <li key={id}>
+              <Link
+                href={`https://www.youtube.com/watch?v=${resourceId.videoId}`}
+              >
+                <div>
+                  <p>
+                    <Image
+                      width={medium.width}
+                      height={medium.height}
+                      src={medium.url}
+                      alt=""
+                    />
+                  </p>
+                  <h3>{title}</h3>
+                </div>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+      <ul>
+        {playListTwo.items.map((item) => {
           console.log('item', item);
           const { id, snippet = {} } = item;
           const { title, thumbnails = {}, resourceId } = snippet; //destructure 해두는 과정임
