@@ -16,35 +16,60 @@ const chosenList = [
   { name: '걍밍경', channelId: 'UCfqVrM2cvwxG3-EvxbsN0KQ' },
   { name: '콬TV', channelId: 'UCybPxZoFDPR1qbN04daAc2g' },
   { name: 'GYM JONG KOOK', channelId: 'UCoe-0EVDJnjlSoPK8ygcGwQ' },
+  { name: '애니멀봐', channelId: 'UC6zbH1Z4G32bBV9wyK6ikPA' },
+  { name: '김해준', channelId: 'UCPwGQuQiIqvUTfa_OKZL7qQ' },
+];
+
+const chosenPlayList = [
+  {
+    name: '미노이의 요리조리',
+    playListId: 'PLeb2Hd9bOARRduRxOeT9YIm6BvD6hYYHs',
+  },
+  {
+    name: '05학번이즈히어',
+    playListId: 'PL1nP78IpsXsOGFF5_ngIr69vpAIL0zZWy',
+  },
 ];
 export async function getStaticProps() {
   const requests = (num) => {
     return `${YOUTUBE_SEARCH_API}?part=snippet&channelId=${chosenList[num].channelId}&order=date&maxResults=1&key=${process.env.YOUTUBE_API_KEY}`;
   };
 
-  const playListRequests = () => {
-    return `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLAlM76XTWG8fZ2bT8hcQL3HKbVVs3j95g&maxResults=1&key=${process.env.YOUTUBE_API_KEY}`;
+  const playListRequests = (num) => {
+    return `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=${chosenPlayList[num].playListId}&maxResults=1&key=${process.env.YOUTUBE_API_KEY}`;
   };
 
-  const [dataThree, dataFour, dataFive, dataSix, dataSeven] = await Promise.all(
-    [
-      fetch(requests(0)).then((res) => res.json()),
-      fetch(requests(1)).then((res) => res.json()),
-      fetch(requests(2)).then((res) => res.json()),
-      fetch(requests(3)).then((res) => res.json()),
-      fetch(requests(4)).then((res) => res.json()),
-    ]
-  );
+  const [
+    dataThree,
+    dataFour,
+    dataFive,
+    dataSix,
+    dataSeven,
+    youtuberZero,
+    youtuberOne,
+    playListOne,
+    playListTwo,
+  ] = await Promise.all([
+    fetch(requests(0)).then((res) => res.json()),
+    fetch(requests(1)).then((res) => res.json()),
+    fetch(requests(2)).then((res) => res.json()),
+    fetch(requests(3)).then((res) => res.json()),
+    fetch(requests(4)).then((res) => res.json()),
+    fetch(requests(5)).then((res) => res.json()),
+    fetch(requests(6)).then((res) => res.json()),
+    fetch(playListRequests(0)).then((res) => res.json()),
+    fetch(playListRequests(1)).then((res) => res.json()),
+  ]);
 
-  const res = await fetch(
-    `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLif_jr7pPZAD8EJtkFBBctqm5L38JqtGb&maxResults=3&key=${process.env.YOUTUBE_API_KEY}`
-  );
-  const playListOne = await res.json();
+  // const [playListOne, playListTwo] = await Promise.all([
+  //   fetch(playListRequests(0)).then((res) => res.json()),
+  //   fetch(playListRequests(1)).then((res) => res.json()),
+  // ]);
 
-  const resTwo = await fetch(
-    `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLeb2Hd9bOARRduRxOeT9YIm6BvD6hYYHs&maxResults=3&key=${process.env.YOUTUBE_API_KEY}`
-  );
-  const playListTwo = await resTwo.json();
+  // const resTwo = await fetch(
+  //   `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLeb2Hd9bOARRduRxOeT9YIm6BvD6hYYHs&maxResults=3&key=${process.env.YOUTUBE_API_KEY}`
+  // );
+  // const playListTwo = await resTwo.json();
 
   return {
     props: {
@@ -53,8 +78,10 @@ export async function getStaticProps() {
       dataFive,
       dataSix,
       playListOne,
-      dataSeven,
       playListTwo,
+      dataSeven,
+      youtuberZero,
+      youtuberOne,
     },
     revalidate: 3600,
   };
@@ -66,8 +93,10 @@ export default function Home({
   dataFive,
   dataSix,
   playListOne,
-  // dataSeven,
   playListTwo,
+  youtuberZero,
+  youtuberOne,
+  // dataSeven,
 }) {
   console.log('dataThree', dataThree);
   console.log('dataFour', dataFour);
@@ -78,7 +107,7 @@ export default function Home({
 
   return (
     <div>
-      <ul>
+      {/* <ul>
         {playListOne.items.map((item) => {
           console.log('item', item);
           const { id, snippet = {} } = item;
@@ -136,6 +165,8 @@ export default function Home({
       <OneVideo dataName={dataFour} />
       <OneVideo dataName={dataFive} />
       <OneVideo dataName={dataSix} />
+      <OneVideo dataName={youtuberZero} />
+      <OneVideo dataName={youtuberOne} /> */}
     </div>
   );
 }
