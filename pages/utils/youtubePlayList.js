@@ -11,4 +11,8 @@ export const youtubePlayList = [
     name: '말년을 자유롭게',
     playListId: 'PLG7004vZ8qt2H9ct7TAEbtik0qKd9WizX',
   },
+  {
+    name: '튀르키예즈 온 더 블럭',
+    playListId: 'PLAlM76XTWG8d9V-Y8pMvcjuQ7sBQeHWUn',
+  },
 ];

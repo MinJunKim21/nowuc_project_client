@@ -30,6 +30,8 @@ export async function getStaticProps() {
     youtuberFive,
     youtuberSix,
     youtuberSeven,
+    youtuberEight,
+    playListZero,
     playListOne,
     playListTwo,
     playListThree,
@@ -42,9 +44,11 @@ export async function getStaticProps() {
     fetch(requests(5)).then((res) => res.json()),
     fetch(requests(6)).then((res) => res.json()),
     fetch(requests(7)).then((res) => res.json()),
+    fetch(requests(8)).then((res) => res.json()),
     fetch(playListRequests(0)).then((res) => res.json()),
     fetch(playListRequests(1)).then((res) => res.json()),
     fetch(playListRequests(2)).then((res) => res.json()),
+    fetch(playListRequests(3)).then((res) => res.json()),
   ]);
 
   return {
@@ -57,6 +61,8 @@ export async function getStaticProps() {
       youtuberFive,
       youtuberSix,
       youtuberSeven,
+      youtuberEight,
+      playListZero,
       playListOne,
       playListTwo,
       playListThree,
@@ -74,12 +80,15 @@ export default function Home({
   youtuberFive,
   youtuberSix,
   youtuberSeven,
+  youtuberEight,
+  playListZero,
   playListOne,
   playListTwo,
   playListThree,
 }) {
   return (
     <div>
+      <PlayListOneVideo dataName={playListZero} />
       <PlayListOneVideo dataName={playListOne} />
       <PlayListOneVideo dataName={playListTwo} />
       <PlayListOneVideo dataName={playListThree} />
@@ -91,6 +100,7 @@ export default function Home({
       <OneVideo dataName={youtuberFive} />
       <OneVideo dataName={youtuberSix} />
       <OneVideo dataName={youtuberSeven} />
+      <OneVideo dataName={youtuberEight} />
     </div>
   );
 }
