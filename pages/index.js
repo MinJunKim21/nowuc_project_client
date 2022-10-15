@@ -86,10 +86,14 @@ export default function Home({
   playListTwo,
   playListThree,
 }) {
+  console.log('hi');
   return (
     <div>
-      <PlayListOneVideo dataName={playListZero} />
-      <PlayListOneVideo dataName={playListOne} />
+      <PlayListOneVideo
+        dataName={playListZero}
+        youtubePlayList={youtubePlayList[0]}
+      />
+      {/* <PlayListOneVideo dataName={playListOne} />
       <PlayListOneVideo dataName={playListTwo} />
       <PlayListOneVideo dataName={playListThree} />
       <OneVideo dataName={youtuberZero} />
@@ -100,7 +104,7 @@ export default function Home({
       <OneVideo dataName={youtuberFive} />
       <OneVideo dataName={youtuberSix} />
       <OneVideo dataName={youtuberSeven} />
-      <OneVideo dataName={youtuberEight} />
+      <OneVideo dataName={youtuberEight} /> */}
     </div>
   );
 }

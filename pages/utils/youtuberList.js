@@ -1,5 +1,11 @@
 export const youtuberList = [
-  { num: '0', name: '침착맨', channelId: 'UCUj6rrhMTR9pipbAWBAMvUQ' },
+  {
+    num: '0',
+    name: '침착맨',
+    channelId: 'UCUj6rrhMTR9pipbAWBAMvUQ',
+    profilepic:
+      'https://yt3.ggpht.com/ytc/AMLnZu-OoCj8oG4hssfpUAvZ5EPCjBu21krVcB6tkVFsQA=s88-c-k-c0x00ffffff-no-rj',
+  },
   { num: '1', name: '슈카', channelId: 'UCsJ6RuBiTVWRX156FVbeaGg' },
   { num: '2', name: '걍밍경', channelId: 'UCfqVrM2cvwxG3-EvxbsN0KQ' },
   { num: '3', name: '콬TV', channelId: 'UCybPxZoFDPR1qbN04daAc2g' },

@@ -9,19 +9,20 @@ function OneVideo({ dataName }) {
           const { id = {}, snippet = {} } = item;
           const { videoId } = id;
           const { title, publishTime, channelTitle, thumbnails = {} } = snippet; //destructure 해두는 과정임
-          const { medium = {} } = thumbnails;
+          // const { medium = {} } = thumbnails;
           return (
             <li key={videoId}>
               <Link href={`https://www.youtube.com/watch?v=${videoId}`}>
                 <div>
-                  <p>
+                  {/* <p>
                     <Image
                       width={medium.width}
                       height={medium.height}
                       src={medium.url}
                       alt=""
                     />
-                  </p>
+                  </p> */}
+                  {/* 썸네일 숨기기 */}
                   <h2 className="text-sm">{title}</h2>
                   <h4>{new Date(publishTime).toLocaleDateString()}</h4>
                   {/* {new Date(val.createdAt).toLocaleDateString()} */}
