@@ -2,7 +2,7 @@ export const youtubePlayList = [
   {
     name: '미노이의 요리조리',
     playListId: 'PLeb2Hd9bOARRduRxOeT9YIm6BvD6hYYHs',
-    profilepic: 'https://pbs.twimg.com/media/E9oc-h0VEAcfN2i.jpg',
+    profilepic: '/imgsrc/menoiyorijori.jpeg',
   },
   {
     name: '05학번이즈히어',
