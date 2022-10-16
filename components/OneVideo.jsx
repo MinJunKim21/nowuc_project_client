@@ -2,6 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 function OneVideo({ dataName, youtuberList }) {
+  console.log(dataName);
+  console.log(youtuberList);
   return (
     <div>
       <ul>

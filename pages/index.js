@@ -23,7 +23,7 @@ export async function getStaticProps() {
 
   const [
     youtuberZero,
-    // youtuberOne,
+    youtuberOne,
     // youtuberTwo,
     // youtuberThree,
     // youtuberFour,
@@ -37,7 +37,7 @@ export async function getStaticProps() {
     // playListThree,
   ] = await Promise.all([
     fetch(requests(0)).then((res) => res.json()),
-    // fetch(requests(1)).then((res) => res.json()),
+    fetch(requests(1)).then((res) => res.json()),
     // fetch(requests(2)).then((res) => res.json()),
     // fetch(requests(3)).then((res) => res.json()),
     // fetch(requests(4)).then((res) => res.json()),
@@ -54,7 +54,7 @@ export async function getStaticProps() {
   return {
     props: {
       youtuberZero,
-      // youtuberOne,
+      youtuberOne,
       // youtuberTwo,
       // youtuberThree,
       // youtuberFour,
@@ -73,7 +73,7 @@ export async function getStaticProps() {
 
 export default function Home({
   youtuberZero,
-  // youtuberOne,
+  youtuberOne,
   // youtuberTwo,
   // youtuberThree,
   // youtuberFour,
@@ -96,8 +96,8 @@ export default function Home({
       <PlayListOneVideo dataName={playListTwo} />
       <PlayListOneVideo dataName={playListThree} /> */}
       <OneVideo dataName={youtuberZero} youtuberList={youtuberList[0]} />
-      {/* <OneVideo dataName={youtuberOne} />
-      <OneVideo dataName={youtuberTwo} />
+      <OneVideo dataName={youtuberOne} youtuberList={youtuberList[1]} />
+      {/* <OneVideo dataName={youtuberTwo} />
       <OneVideo dataName={youtuberThree} />
       <OneVideo dataName={youtuberFour} />
       <OneVideo dataName={youtuberFive} />

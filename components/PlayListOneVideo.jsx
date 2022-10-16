@@ -6,8 +6,6 @@ function OneVideo({ dataName, youtubePlayList }) {
     <div>
       <ul>
         {dataName.items.map((item) => {
-          console.log('item', item);
-          console.log(youtubePlayList);
           const { id, snippet = {} } = item;
           const { title, resourceId, publishedAt, channelTitle } = snippet; //destructure 해두는 과정임
           const { profilepic, name } = youtubePlayList;
@@ -20,7 +18,6 @@ function OneVideo({ dataName, youtubePlayList }) {
                   <h3>{title}</h3>
                   <h3>{name}</h3>
                   <h3>{new Date(publishedAt).toLocaleDateString()}</h3>
-                  {/* <h3>{profilepiㄴc}</h3> */}
                   <Image
                     src={profilepic}
                     width="36"
