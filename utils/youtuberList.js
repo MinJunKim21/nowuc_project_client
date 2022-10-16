@@ -53,4 +53,46 @@ export const youtuberList = [
     channelId: 'UC1EiHIhV6UDRWOY6BaEavdw',
     profilepic: '/imgsrc/hanzy.jpeg',
   },
+  {
+    num: '9',
+    name: '생활코딩',
+    channelId: 'UCvc8kv-i5fvFTJBFAk6n1SAs',
+    profilepic: '/imgsrc/senghwalcoding.jpeg',
+  },
+  {
+    num: '10',
+    name: 'freeCodeCamp',
+    channelId: 'UC1emV4A8liRs9p80CY8ElUQfre',
+    profilepic: '/imgsrc/freecodecamp.jpeg',
+  },
+  {
+    num: '11',
+    name: 'WebDevSimplified',
+    channelId: 'UCFbNIlppjAuEX4znoulh0Cwwe',
+    profilepic: '/imgsrc/webdevsimplified.jpeg',
+  },
+  {
+    num: '12',
+    name: 'SonnySangha',
+    channelId: 'UCqeTj_QAnNlmt7FwzNwHZnA',
+    profilepic: '/imgsrc/sonnysangha.jpeg',
+  },
+  {
+    num: '13',
+    name: '코딩앙마',
+    channelId: 'UCxft4RZ8lrK_BdPNz8NOP7Q',
+    profilepic: '/imgsrc/codingangma.jpeg',
+  },
+  {
+    num: '14',
+    name: 'LamaDev',
+    channelId: 'UCOxWrX5MIdXIeRNaXC3sqIg',
+    profilepic: '/imgsrc/lamadev.jpeg',
+  },
+  {
+    num: '15',
+    name: 'TraversyMedia',
+    channelId: 'UC29ju8bIPH5as8OGnQzwJyA',
+    profilepic: '/imgsrc/traversymedia.jpeg',
+  },
 ];

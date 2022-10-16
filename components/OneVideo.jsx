@@ -16,13 +16,13 @@ function OneVideo({ dataName, youtuberList }) {
           const { profilepic, name } = youtuberList;
           return (
             <li key={videoId}>
-              <div className="flex w-full h-19 items-center border-[1px] border-gray-300 border-r-0">
+              <div className="flex w-full h-19 items-center border-b-[1px] border-gray-300 border-r-0">
                 <div className="bg-[#252450] h-[76px] w-1.5"></div>
                 <div className="px-1 py-auto">
                   <Image
                     src={profilepic}
-                    width="36"
-                    height="36"
+                    width="50"
+                    height="50"
                     objectFit="cover"
                     alt="/"
                     className="rounded-full"

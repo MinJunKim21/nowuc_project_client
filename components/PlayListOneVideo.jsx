@@ -12,7 +12,7 @@ function OneVideo({ dataName, youtubePlayList }) {
           const { profilepic, name } = youtubePlayList;
           return (
             <li key={id}>
-              <div className="flex w-full h-19 items-center border-[1px] border-gray-300 border-r-0">
+              <div className="flex w-full h-19 items-center border-b-[1px] border-gray-300 border-r-0">
                 <div className="bg-[#252450] h-[76px] w-1.5"></div>
                 <div className="px-1 py-auto">
                   <Image
