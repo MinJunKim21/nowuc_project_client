@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import OneVideo from '../components/OneVideo';
 import PlayListOneVideo from '../components/PlayListOneVideo';
-import { youtuberList } from './utils/youtuberList';
-import { youtubePlayList } from './utils/youtubePlayList';
+import { youtuberList } from '../utils/youtuberList';
+import { youtubePlayList } from '../utils/youtubePlayList';
 
 const API_KEY = 'AIzaSyDy1kxV8bZgc9ye2b_fTxeRyj1tp8MJ9Ks';
 const YOUTUBE_PLAYLIST_ITEMS_API =
