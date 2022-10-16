@@ -7,13 +7,16 @@ export const youtubePlayList = [
   {
     name: '05학번이즈히어',
     playListId: 'PL1nP78IpsXsOGFF5_ngIr69vpAIL0zZWy',
+    profilepic: '/imgsrc/zerofivehere.jpeg',
   },
   {
     name: '말년을 자유롭게',
     playListId: 'PLG7004vZ8qt2H9ct7TAEbtik0qKd9WizX',
+    profilepic: '/imgsrc/mallyunfree.jpeg',
   },
   {
     name: '튀르키예즈 온 더 블럭',
     playListId: 'PLAlM76XTWG8d9V-Y8pMvcjuQ7sBQeHWUn',
+    profilepic: '/imgsrc/turkeyblock.jpeg',
   },
 ];

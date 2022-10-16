@@ -88,6 +88,27 @@ export default function Home({
 }) {
   return (
     <div>
+      <div className="flex flex-col text-center justify-center space-y-8 bg-[#252450] h-[348px] relative">
+        <span className="text-white text-xl font-semibold leading-8">
+          뭘좀아는 민준과 지원은
+          <br />
+          사소한 고민에서 출발했다.
+        </span>
+        <span className="text-xs text-white">
+          보고 싶은 영상만 선별하여 최고의 시간을 갖을 유튜브 오마카세
+        </span>
+        <div className="flex w-full space-x-4 absolute bottom-8 justify-center ">
+          <button className="border border-gray-300 rounded-full text-gray-400 px-2 py-1">
+            공부하자
+          </button>
+          <button className="border border-gray-300 rounded-full text-gray-400 px-2">
+            놀&nbsp;&nbsp;자
+          </button>
+          <button className="border border-gray-300 rounded-full text-gray-400 px-2">
+            구독자순
+          </button>
+        </div>
+      </div>
       <PlayListOneVideo
         dataName={playListZero}
         youtubePlayList={youtubePlayList[0]}
