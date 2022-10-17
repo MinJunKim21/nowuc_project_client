@@ -56,19 +56,19 @@ export const youtuberList = [
   {
     num: '9',
     name: '생활코딩',
-    channelId: 'UCvc8kv-i5fvFTJBFAk6n1SAs',
+    channelId: 'UCvc8kv-i5fvFTJBFAk6n1SA',
     profilepic: '/imgsrc/senghwalcoding.jpeg',
   },
   {
     num: '10',
     name: 'freeCodeCamp',
-    channelId: 'UC1emV4A8liRs9p80CY8ElUQfre',
+    channelId: 'UC1emV4A8liRs9p80CY8ElUQ',
     profilepic: '/imgsrc/freecodecamp.jpeg',
   },
   {
     num: '11',
     name: 'WebDevSimplified',
-    channelId: 'UCFbNIlppjAuEX4znoulh0Cwwe',
+    channelId: 'UCFbNIlppjAuEX4znoulh0Cw',
     profilepic: '/imgsrc/webdevsimplified.jpeg',
   },
   {

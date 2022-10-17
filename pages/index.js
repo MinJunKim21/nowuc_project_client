@@ -27,70 +27,70 @@ export async function getStaticProps() {
 
   const [
     youtuberZero,
-    // youtuberOne,
-    // youtuberTwo,
-    // youtuberThree,
-    // youtuberFour,
-    // youtuberFive,
-    // youtuberSix,
-    // youtuberSeven,
-    // youtuberEight,
-    // youtuberNine,
-    // youtuberTen,
-    // youtuberEleven,
-    // youtuberTwelve,
-    // youtuberThirteen,
-    // youtuberFourteen,
-    // youtuberFifteen,
-    // playListZero,
-    // playListOne,
-    // playListTwo,
-    // playListThree,
+    youtuberOne,
+    youtuberTwo,
+    youtuberThree,
+    youtuberFour,
+    youtuberFive,
+    youtuberSix,
+    youtuberSeven,
+    youtuberEight,
+    youtuberNine,
+    youtuberTen,
+    youtuberEleven,
+    youtuberTwelve,
+    youtuberThirteen,
+    youtuberFourteen,
+    youtuberFifteen,
+    playListZero,
+    playListOne,
+    playListTwo,
+    playListThree,
   ] = await Promise.all([
     fetch(requests(0)).then((res) => res.json()),
-    // fetch(requests(1)).then((res) => res.json()),
-    // fetch(requests(2)).then((res) => res.json()),
-    // fetch(requests(3)).then((res) => res.json()),
-    // fetch(requests(4)).then((res) => res.json()),
-    // fetch(requests(5)).then((res) => res.json()),
-    // fetch(requests(6)).then((res) => res.json()),
-    // fetch(requests(7)).then((res) => res.json()),
-    // fetch(requests(8)).then((res) => res.json()),
-    // fetch(requests(9)).then((res) => res.json()),
-    // fetch(requests(10)).then((res) => res.json()),
-    // fetch(requests(11)).then((res) => res.json()),
-    // fetch(requests(12)).then((res) => res.json()),
-    // fetch(requests(13)).then((res) => res.json()),
-    // fetch(requests(14)).then((res) => res.json()),
-    // fetch(requests(15)).then((res) => res.json()),
-    // fetch(playListRequests(0)).then((res) => res.json()),
-    // fetch(playListRequests(1)).then((res) => res.json()),
-    // fetch(playListRequests(2)).then((res) => res.json()),
-    // fetch(playListRequests(3)).then((res) => res.json()),
+    fetch(requests(1)).then((res) => res.json()),
+    fetch(requests(2)).then((res) => res.json()),
+    fetch(requests(3)).then((res) => res.json()),
+    fetch(requests(4)).then((res) => res.json()),
+    fetch(requests(5)).then((res) => res.json()),
+    fetch(requests(6)).then((res) => res.json()),
+    fetch(requests(7)).then((res) => res.json()),
+    fetch(requests(8)).then((res) => res.json()),
+    fetch(requests(9)).then((res) => res.json()),
+    fetch(requests(10)).then((res) => res.json()),
+    fetch(requests(11)).then((res) => res.json()),
+    fetch(requests(12)).then((res) => res.json()),
+    fetch(requests(13)).then((res) => res.json()),
+    fetch(requests(14)).then((res) => res.json()),
+    fetch(requests(15)).then((res) => res.json()),
+    fetch(playListRequests(0)).then((res) => res.json()),
+    fetch(playListRequests(1)).then((res) => res.json()),
+    fetch(playListRequests(2)).then((res) => res.json()),
+    fetch(playListRequests(3)).then((res) => res.json()),
   ]);
 
   return {
     props: {
       youtuberZero,
-      // youtuberOne,
-      // youtuberTwo,
-      // youtuberThree,
-      // youtuberFour,
-      // youtuberFive,
-      // youtuberSix,
-      // youtuberSeven,
-      // youtuberEight,
-      // youtuberNine,
-      // youtuberTen,
-      // youtuberEleven,
-      // youtuberTwelve,
-      // youtuberThirteen,
-      // youtuberFourteen,
-      // youtuberFifteen,
-      // playListZero,
-      // playListOne,
-      // playListTwo,
-      // playListThree,
+      youtuberOne,
+      youtuberTwo,
+      youtuberThree,
+      youtuberFour,
+      youtuberFive,
+      youtuberSix,
+      youtuberSeven,
+      youtuberEight,
+      youtuberNine,
+      youtuberTen,
+      youtuberEleven,
+      youtuberTwelve,
+      youtuberThirteen,
+      youtuberFourteen,
+      youtuberFifteen,
+      playListZero,
+      playListOne,
+      playListTwo,
+      playListThree,
     },
     revalidate: 3600,
   };
@@ -98,25 +98,25 @@ export async function getStaticProps() {
 
 export default function Home({
   youtuberZero,
-  // youtuberOne,
-  // youtuberTwo,
-  // youtuberThree,
-  // youtuberFour,
-  // youtuberFive,
-  // youtuberSix,
-  // youtuberSeven,
-  // youtuberEight,
-  // youtuberNine,
-  // youtuberTen,
-  // youtuberEleven,
-  // youtuberTwelve,
-  // youtuberThirteen,
-  // youtuberFourteen,
-  // youtuberFifteen,
-  // playListZero,
-  // playListOne,
-  // playListTwo,
-  // playListThree,
+  youtuberOne,
+  youtuberTwo,
+  youtuberThree,
+  youtuberFour,
+  youtuberFive,
+  youtuberSix,
+  youtuberSeven,
+  youtuberEight,
+  youtuberNine,
+  youtuberTen,
+  youtuberEleven,
+  youtuberTwelve,
+  youtuberThirteen,
+  youtuberFourteen,
+  youtuberFifteen,
+  playListZero,
+  playListOne,
+  playListTwo,
+  playListThree,
 }) {
   const [category, setCategory] = useState('fun');
   // const [study, setStudy] = useState(false);
@@ -170,41 +170,54 @@ export default function Home({
         </div>
       </div>
       {category === 'fun' && (
-        <OneVideo dataName={youtuberZero} youtuberList={youtuberList[0]} />
+        <div>
+          <OneVideo dataName={youtuberZero} youtuberList={youtuberList[0]} />
+          <OneVideo dataName={youtuberOne} youtuberList={youtuberList[1]} />
+          <OneVideo dataName={youtuberTwo} youtuberList={youtuberList[2]} />
+          <OneVideo dataName={youtuberThree} youtuberList={youtuberList[3]} />
+          <OneVideo dataName={youtuberFour} youtuberList={youtuberList[4]} />
+          <OneVideo dataName={youtuberFive} youtuberList={youtuberList[5]} />
+          <OneVideo dataName={youtuberSix} youtuberList={youtuberList[6]} />
+          <OneVideo dataName={youtuberSeven} youtuberList={youtuberList[7]} />
+          <OneVideo dataName={youtuberEight} youtuberList={youtuberList[8]} />
+          <PlayListOneVideo
+            dataName={playListZero}
+            youtubePlayList={youtubePlayList[0]}
+          />
+          <PlayListOneVideo
+            dataName={playListOne}
+            youtubePlayList={youtubePlayList[1]}
+          />
+          <PlayListOneVideo
+            dataName={playListTwo}
+            youtubePlayList={youtubePlayList[2]}
+          />
+          <PlayListOneVideo
+            dataName={playListThree}
+            youtubePlayList={youtubePlayList[3]}
+          />
+        </div>
       )}
-      {/* <OneVideo dataName={youtuberOne} youtuberList={youtuberList[1]} />
-      <OneVideo dataName={youtuberTwo} youtuberList={youtuberList[2]} />
-      <OneVideo dataName={youtuberThree} youtuberList={youtuberList[3]} />
-      <OneVideo dataName={youtuberFour} youtuberList={youtuberList[4]} />
-      <OneVideo dataName={youtuberFive} youtuberList={youtuberList[5]} />
-      <OneVideo dataName={youtuberSix} youtuberList={youtuberList[6]} />
-      <OneVideo dataName={youtuberSeven} youtuberList={youtuberList[7]} />
-      <OneVideo dataName={youtuberEight} youtuberList={youtuberList[8]} />
-      <PlayListOneVideo
-        dataName={playListZero}
-        youtubePlayList={youtubePlayList[0]}
-      />
-      <PlayListOneVideo
-        dataName={playListOne}
-        youtubePlayList={youtubePlayList[1]}
-      />
-      <PlayListOneVideo
-        dataName={playListTwo}
-        youtubePlayList={youtubePlayList[2]}
-      />
-      <PlayListOneVideo
-        dataName={playListThree}
-        youtubePlayList={youtubePlayList[3]}
-      /> */}
-      {/* {category === 'study' && (
-        <OneVideo dataName={youtuberNine} youtuberList={youtuberList[9]} />
-        <OneVideo dataName={youtuberTen} youtuberList={youtuberList[10]} />
-        <OneVideo dataName={youtuberEleven} youtuberList={youtuberList[11]} />
-        <OneVideo dataName={youtuberTwelve} youtuberList={youtuberList[12]} />
-        <OneVideo dataName={youtuberThirteen} youtuberList={youtuberList[13]} />
-        <OneVideo dataName={youtuberFourteen} youtuberList={youtuberList[14]} />
-        <OneVideo dataName={youtuberFifteen} youtuberList={youtuberList[15]} />
-      )} */}
+      {category === 'study' && (
+        <div>
+          <OneVideo dataName={youtuberNine} youtuberList={youtuberList[9]} />
+          <OneVideo dataName={youtuberTen} youtuberList={youtuberList[10]} />
+          <OneVideo dataName={youtuberEleven} youtuberList={youtuberList[11]} />
+          <OneVideo dataName={youtuberTwelve} youtuberList={youtuberList[12]} />
+          <OneVideo
+            dataName={youtuberThirteen}
+            youtuberList={youtuberList[13]}
+          />
+          <OneVideo
+            dataName={youtuberFourteen}
+            youtuberList={youtuberList[14]}
+          />
+          <OneVideo
+            dataName={youtuberFifteen}
+            youtuberList={youtuberList[15]}
+          />
+        </div>
+      )}
     </div>
   );
 }
