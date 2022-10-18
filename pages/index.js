@@ -8,6 +8,7 @@ import PlayListOneVideo from '../components/PlayListOneVideo';
 import { youtuberList } from '../utils/youtuberList';
 import { youtubePlayList } from '../utils/youtubePlayList';
 import { useState } from 'react';
+import Footer from '../components/Footer';
 
 //API 관련
 const API_KEY = 'AIzaSyDy1kxV8bZgc9ye2b_fTxeRyj1tp8MJ9Ks';
@@ -125,11 +126,32 @@ export default function Home({
   return (
     <div>
       <div className="flex flex-col text-center justify-center space-y-8 bg-[#252450] h-[348px] relative">
-        <span className="text-white text-xl font-semibold leading-8">
-          뭘좀아는 민준과 지원은
-          <br />
-          사소한 고민에서 출발했다.
-        </span>
+        <div className="absolute top-12 left-[50%] translate-x-[-50%]">
+          <Image src="/imgsrc/logo.png" alt="/" width="87px" height="36px" />
+        </div>
+        <div className="relative">
+          <span className="text-white text-xl font-semibold leading-8 relative">
+            뭘좀아는 민준과 지원은
+            <br />
+            사소한 고민에서 출발했다.
+            <div className="absolute top-[-16px] left-[-16px] ">
+              <Image
+                src="/imgsrc/shine.png"
+                alt="/"
+                width="16px"
+                height="16px"
+              />
+            </div>
+            <div className="absolute top-10 left-[-12px] ">
+              <Image
+                src="/imgsrc/underline.png"
+                alt="/"
+                width="91px"
+                height="7px"
+              />
+            </div>
+          </span>
+        </div>
         <span className="text-xs text-white">
           보고 싶은 영상만 선별하여 최고의 시간을 갖을 유튜브 오마카세
         </span>
@@ -218,12 +240,18 @@ export default function Home({
           />
         </div>
       )}
+      {category === 'subscriber' && (
+        <div className="flex justify-center items-center  w-full h-[336px]">
+          준비 중 입니다!
+        </div>
+      )}
+      <Footer />
     </div>
   );
 }
 
-const ButtonActive = tw.div`bg-[#FAFC6D] rounded-full text-[#252450] px-2 py-1 font-semibold
+const ButtonActive = tw.div`bg-[#FAFC6D] rounded-full text-[#252450] px-2 items-center py-[1px] font-semibold cursor-pointer
 `;
 
-const ButtonInactive = tw.div`border border-gray-300 rounded-full text-gray-400 px-2 py-1 font-semibold
+const ButtonInactive = tw.div`border border-gray-300 rounded-full text-gray-400 px-2 items-center py-[1px] font-semibold cursor-pointer
 `;

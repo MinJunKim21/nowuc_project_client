@@ -9,7 +9,6 @@ function OneVideo({ dataName, youtuberList }) {
     <div>
       <ul>
         {dataName.items.map((item) => {
-          console.log(item, item);
           const { id = {}, snippet = {} } = item;
           const { videoId } = id;
           const { title, publishedAt, channelTitle } = snippet; //destructure 해두는 과정임
@@ -34,7 +33,9 @@ function OneVideo({ dataName, youtuberList }) {
                       {title}
                     </h3>
                     <div className="flex justify-between pl-2">
-                      <h3 className="text-sm text-gray-600">{name}</h3>
+                      <h3 className="text-sm text-[#888888] underline">
+                        {name}
+                      </h3>
                       <h3 className="font-light text-xs">
                         {new Date(publishedAt).toLocaleDateString()}
                       </h3>

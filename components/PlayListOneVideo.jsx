@@ -30,7 +30,9 @@ function OneVideo({ dataName, youtubePlayList }) {
                       {title}
                     </h3>
                     <div className="flex justify-between pl-2">
-                      <h3 className="text-sm text-gray-600">{name}</h3>
+                      <h3 className="text-sm text-[#888888] underline">
+                        {name}
+                      </h3>
                       <h3 className="font-light text-xs">
                         {new Date(publishedAt).toLocaleDateString()}
                       </h3>
