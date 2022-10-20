@@ -11,7 +11,6 @@ import { useState } from 'react';
 import Footer from '../components/Footer';
 
 //API 관련
-const API_KEY = 'AIzaSyDy1kxV8bZgc9ye2b_fTxeRyj1tp8MJ9Ks';
 const YOUTUBE_PLAYLIST_ITEMS_API =
   'https://www.googleapis.com/youtube/v3/playlistItems';
 const YOUTUBE_CHANNELS_API = 'https://www.googleapis.com/youtube/v3/channels';
