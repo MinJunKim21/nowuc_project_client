@@ -25,6 +25,19 @@ export async function getStaticProps() {
     return `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&fields=items(id,snippet(title,publishedAt,resourceId))&playlistId=${youtubePlayList[num].playListId}&maxResults=1&key=${process.env.YOUTUBE_API_KEY}`;
   };
 
+  const youtubers = [];
+  const playlists = [];
+
+  for (let i = 0; i < 16; i++) {
+    const res = await fetch(requests(i)).then((res) => res.json());
+    youtubers.push(res);
+  }
+
+  for (let i = 0; i < 4; i++) {
+    const res = await fetch(playListRequests(i)).then((res) => res.json());
+    playlists.push(res);
+  }
+
   const [
     youtuberZero,
     youtuberOne,
@@ -42,32 +55,9 @@ export async function getStaticProps() {
     youtuberThirteen,
     youtuberFourteen,
     youtuberFifteen,
-    playListZero,
-    playListOne,
-    playListTwo,
-    playListThree,
-  ] = await Promise.all([
-    fetch(requests(0)).then((res) => res.json()),
-    fetch(requests(1)).then((res) => res.json()),
-    fetch(requests(2)).then((res) => res.json()),
-    fetch(requests(3)).then((res) => res.json()),
-    fetch(requests(4)).then((res) => res.json()),
-    fetch(requests(5)).then((res) => res.json()),
-    fetch(requests(6)).then((res) => res.json()),
-    fetch(requests(7)).then((res) => res.json()),
-    fetch(requests(8)).then((res) => res.json()),
-    fetch(requests(9)).then((res) => res.json()),
-    fetch(requests(10)).then((res) => res.json()),
-    fetch(requests(11)).then((res) => res.json()),
-    fetch(requests(12)).then((res) => res.json()),
-    fetch(requests(13)).then((res) => res.json()),
-    fetch(requests(14)).then((res) => res.json()),
-    fetch(requests(15)).then((res) => res.json()),
-    fetch(playListRequests(0)).then((res) => res.json()),
-    fetch(playListRequests(1)).then((res) => res.json()),
-    fetch(playListRequests(2)).then((res) => res.json()),
-    fetch(playListRequests(3)).then((res) => res.json()),
-  ]);
+  ] = youtubers;
+
+  const [playListZero, playListOne, playListTwo, playListThree] = playlists;
 
   return {
     props: {
