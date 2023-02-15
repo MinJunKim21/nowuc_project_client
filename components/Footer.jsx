@@ -7,7 +7,7 @@ function Footer() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   return (
-    <div className="flex flex-col relative">
+    <div className="flex flex-col relative mt-20">
       <div className="flex h-[212px] z-[-10] w-full">
         <Image
           src="/imgsrc/footerbg.png"
